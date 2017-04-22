@@ -2,7 +2,7 @@
 
 public class CharacterInput : MonoBehaviour {
 
-	public CharacterController controller;
+//	public CharacterController controller;
 
 	public string rotationAxisName;
 	public string forwardAxisName;
@@ -14,13 +14,13 @@ public class CharacterInput : MonoBehaviour {
 
 	public Transform characterModel;
 
-	public void Update()
+	public Rigidbody body;
+
+	float forward;
+	float rotation;
+
+	void FixedUpdate()
 	{
-		// controller.mov
-
-		float rotation = Input.GetAxis (rotationAxisName);
-		float forward = Input.GetAxis (forwardAxisName);
-
 		float speed = forwardSpeed;
 
 		if (forward < 0)
@@ -28,8 +28,23 @@ public class CharacterInput : MonoBehaviour {
 
 		characterModel.Rotate(0, rotation * rotationSpeed, 0);
 
-//		var forwardVector = ;
-		Vector3 forwardVector = transform.TransformDirection(Vector3.forward);
-		controller.Move(forwardVector * forward * speed * Time.deltaTime);
+		//		body.AddRelativeTorque(
+
+		//		var forwardVector = ;
+//		Vector3 forwardVector = transform.TransformDirection(Vector3.forward);
+
+		body.AddRelativeForce(Vector3.forward * forward * speed, ForceMode.Acceleration);
+
+		//		characterModel.Translate (forwardVector * forward * speed * Time.deltaTime);
+		//		controller.Move(forwardVector * forward * speed * Time.deltaTime);
+	}
+
+	public void Update()
+	{
+		// controller.mov
+
+		rotation = Input.GetAxis (rotationAxisName);
+		forward = Input.GetAxis (forwardAxisName);
+
 	}
 }
