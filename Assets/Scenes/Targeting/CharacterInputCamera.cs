@@ -24,11 +24,15 @@ public class CharacterInputCamera : MonoBehaviour {
 
 	public float speed = 10.0f;
 	public float rotationSpeed = 10.0f;
+	public float weaponRotationSpeed = -10.0f;
 
 	bool shootButton;
 	bool switchModeButton;
 
 	public Weapon weapon;
+
+	// weapon rotation limits
+	// weapon starts in fixed rotation (between turn and turn)
 
 	public ControllerMode controllerMode = ControllerMode.MovementMode;
 
@@ -47,9 +51,14 @@ public class CharacterInputCamera : MonoBehaviour {
 
 		weapon.gameObject.SetActive (controllerMode == ControllerMode.AttackingMode);
 	}
+		
+	// Update is called once per frame
+	void Update () {
+		horizontal = Input.GetAxis (horizontalAxisName);
+		vertical = Input.GetAxis (verticalAxisName);
+		shootButton = Input.GetButtonUp (shootButtonName);
+		switchModeButton = Input.GetButtonUp (switchModeButtonName);
 
-	void FixedUpdate()
-	{
 		if (switchModeButton) {
 			SwitchMode();
 		}
@@ -65,18 +74,11 @@ public class CharacterInputCamera : MonoBehaviour {
 		} else {
 
 			body.transform.Rotate(0, horizontal * rotationSpeed * Time.deltaTime, 0);
+			weapon.transform.Rotate (vertical * weaponRotationSpeed * Time.deltaTime, 0, 0);
 
 			if (shootButton && weapon != null) {
 				weapon.Fire (1.0f);
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		horizontal = Input.GetAxis (horizontalAxisName);
-		vertical = Input.GetAxis (verticalAxisName);
-		shootButton = Input.GetButtonUp (shootButtonName);
-		switchModeButton = Input.GetButtonUp (switchModeButtonName);
 	}
 }
