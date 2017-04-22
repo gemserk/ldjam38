@@ -7,14 +7,14 @@ public class WorldCreator
 		var collider = cubePrefab.GetComponent<BoxCollider> ();
 		var cubeSize = collider.size;
 
-		float x = (-worldSize.x * cubeSize.x) + (cubeSize.x * 0.5f);
-		float y = (-worldSize.y * cubeSize.y) + (cubeSize.y * 0.5f);
-		float z = (-worldSize.z * cubeSize.z) + (cubeSize.z * 0.5f);
+		float x = (-worldSize.x * cubeSize.x) * 0.5f;
+		float y = (-worldSize.y * cubeSize.y) * 0.5f;
+		float z = (-worldSize.z * cubeSize.z) * 0.5f;
 
 		for (int i = 0; i < worldSize.x; i++) {
-			y = (-worldSize.y * cubeSize.y) + (cubeSize.y * 0.5f);
+			y = (-worldSize.y * cubeSize.y) * 0.5f;
 			for (int j = 0; j < worldSize.y; j++) {
-				z = (-worldSize.z * cubeSize.z) + (cubeSize.z * 0.5f);
+				z = (-worldSize.z * cubeSize.z) * 0.5f;
 				for (int k = 0; k < worldSize.z; k++) {
 					var cubeObject = GameObject.Instantiate (cubePrefab, parent);
 					cubeObject.transform.localPosition = new Vector3 (x, y, z);
