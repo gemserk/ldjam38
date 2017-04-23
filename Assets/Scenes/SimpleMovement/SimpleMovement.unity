@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 470856161}
   - component: {fileID: 470856160}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1208,13 +1208,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 470856159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df3a5cee9362fd947aec5a67c0e8efa2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ad704c787d2e2c44bb0fb3b8377947f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 1038980764172740, guid: 4a6b0880ff9c62c4f9d6a5c19be15f18, type: 2}
-  worldSize: {x: 8, y: 2, z: 7}
+  movementVector: {x: 1, y: 1, z: 1}
 --- !u!4 &470856161
 Transform:
   m_ObjectHideFlags: 0
@@ -2615,7 +2614,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1946399267}
-  movementVector: {x: 1, y: 0, z: 1}
+  worldMovement: {fileID: 470856160}
+  heightTolerance: 1
 --- !u!1 &903682701
 GameObject:
   m_ObjectHideFlags: 0
