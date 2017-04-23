@@ -6,9 +6,9 @@ public class WorldMovementSimple : WorldMovement
 
 	#region implemented abstract members of WorldMovement
 
-	public override Vector3 Move (Vector3 currentPosition, Vector2 direction, int heightTolerance)
+	public override Vector3 Move (Vector3 currentPosition, Vector3 direction, int heightTolerance)
 	{
-		return currentPosition + new Vector3 (movementVector.x * direction.x, 0, movementVector.y * direction.y);
+		return currentPosition + new Vector3 (movementVector.x * direction.x, 0, movementVector.z * direction.z);
 	}
 
 	#endregion

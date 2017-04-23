@@ -7,9 +7,9 @@ public class WorldMovementBlocks : WorldMovement
 	public float boxChecksize = 0.2f;
 
 	#region implemented abstract members of WorldMovement
-	public override Vector3 Move (Vector3 currentPosition, Vector2 direction, int heightTolerance)
+	public override Vector3 Move (Vector3 currentPosition, Vector3 direction, int heightTolerance)
 	{
-		var newPosition = currentPosition + new Vector3 (unitVector.x * direction.x, 0, unitVector.y * direction.y);
+		var newPosition = currentPosition + new Vector3 (unitVector.x * direction.x, 0, unitVector.z * direction.z);
 
 		newPosition += new Vector3 (0, unitVector.y * (heightTolerance + 1), 0);
 

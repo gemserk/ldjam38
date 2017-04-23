@@ -15,6 +15,6 @@ public abstract class WorldMovement : MonoBehaviour
 
 //	public abstract WorldBlock GetHorizontalBlock(WorldBlock block, int blockCount, int heightTolerance);
 
-	public abstract Vector3 Move(Vector3 currentPosition, Vector2 direction, int heightTolerance);
+	public abstract Vector3 Move(Vector3 currentPosition, Vector3 direction, int heightTolerance);
 
 }
