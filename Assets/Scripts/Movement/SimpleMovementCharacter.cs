@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SimpleMovementCharacter : MonoBehaviour
 {
-	public GameObject character;
+	public Character character;
 
 	public WorldMovement worldMovement;
 
