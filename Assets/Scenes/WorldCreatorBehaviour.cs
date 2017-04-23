@@ -2,6 +2,7 @@
 using System.Linq;
 using Gemserk.Utils;
 using UnityEngine;
+using UnityEditor;
 
 namespace Gemserk
 {
@@ -24,7 +25,8 @@ namespace Gemserk
                     z = (-worldSize.z * cubeSize.z) * 0.5f;
                     for (int k = 0; k < worldSize.z; k++)
                     {
-                        var cubeObject = GameObject.Instantiate(cubePrefab, parent);
+						var cubeObject = PrefabUtility.InstantiatePrefab (cubePrefab) as GameObject;
+						cubeObject.transform.SetParent (parent);
                         cubeObject.transform.localPosition = new Vector3(x, y, z);
                         cubeObject.gameObject.name = String.Format("{0}-{1}-{2} - ({3},{4},{5})", (int)i, j, k, (int)worldSize.x,
                             (int)worldSize.y, (int)worldSize.z);
@@ -47,7 +49,7 @@ namespace Gemserk
         // Use this for initialization
         void Start()
         {
-            Regenerate();
+           // Regenerate();
         }
 
         [ContextMenu("Regenerate")]
