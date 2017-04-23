@@ -46,19 +46,26 @@ public class CharacterInputCamera : MonoBehaviour {
 
 	// weapon rotation limits
 	// weapon starts in fixed rotation (between turn and turn)
-	// jump
+	// fuerza de frenado
+	// fuerza variable de salto segun cuanto mas lo apreto)
+	// mostrar carga de disparo visual
 
 	bool isJumping;
 
 	public float jumpStartImpulse;
 	public float jumpSpeedMultiplier = 0.25f;
-	public FloorDetection floorDetection;
+
+	FloorDetection floorDetection;
 
 	public ControllerMode controllerMode = ControllerMode.MovementMode;
+
+	public Collider jumpCollider;
+	public Collider walkCollider;
 
 	void Start()
 	{
 		weapon.gameObject.SetActive (controllerMode == ControllerMode.AttackingMode);
+		floorDetection = GetComponentInChildren<FloorDetection> ();
 	}
 
 	void SwitchMode()
@@ -70,6 +77,13 @@ public class CharacterInputCamera : MonoBehaviour {
 		}
 
 		weapon.gameObject.SetActive (controllerMode == ControllerMode.AttackingMode);
+	}
+
+	bool IsOnFloor()
+	{
+		if (floorDetection == null)
+			return true;
+		return floorDetection.IsOnFloor ();
 	}
 		
 	// Update is called once per frame
@@ -84,6 +98,9 @@ public class CharacterInputCamera : MonoBehaviour {
 
 		shootButton = Input.GetButton(actionButtonName);
 
+		jumpCollider.enabled = !IsOnFloor();
+		walkCollider.enabled = IsOnFloor();
+
 		if (switchModeButton) {
 			SwitchMode();
 		}
@@ -92,7 +109,7 @@ public class CharacterInputCamera : MonoBehaviour {
 			if (charging)
 				return;
 
-			float speedMultiplier = floorDetection.IsOnFloor() ? 1.0f : jumpSpeedMultiplier;
+			float speedMultiplier = IsOnFloor() ? 1.0f : jumpSpeedMultiplier;
 			
 			var verticalVector = cameraTransform.forward * -1 * vertical;
 			var horizontalVector = cameraTransform.right * horizontal;
@@ -102,9 +119,11 @@ public class CharacterInputCamera : MonoBehaviour {
 			body.transform.LookAt (body.transform.position + movementDirection * 10.0f);
 			body.AddForce (movementDirection * speed * speedMultiplier, ForceMode.Acceleration);
 
-			if (!isJumping && shootButton && floorDetection.IsOnFloor()) {
+			if (!isJumping && shootButton && IsOnFloor()) {
 				isJumping = true;
 				body.AddForce (Vector3.up * body.mass * jumpStartImpulse, ForceMode.Impulse);
+
+
 			} else if (isJumping && !shootButton) {
 				isJumping = false;
 			}
@@ -134,4 +153,5 @@ public class CharacterInputCamera : MonoBehaviour {
 			}
 		}
 	}
+		
 }
