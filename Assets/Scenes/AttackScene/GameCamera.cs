@@ -10,8 +10,6 @@ public class GameCamera : MonoBehaviour
 
 	public float transitionSpeed = 10.0f;
 
-	public CameraInput cameraInput;
-
 	public AnimationCurve movementCurve;
 
 	public Transform railStartPosition;
@@ -35,9 +33,6 @@ public class GameCamera : MonoBehaviour
 	{
 		targetPosition = transform.position;
 		transitioning = true;
-
-		if (cameraInput != null)
-			cameraInput.enabled = false;
 	}
 
 	public void SetRailPosition(float t)
@@ -49,8 +44,6 @@ public class GameCamera : MonoBehaviour
 
 	public void MoveRailPosition(float direction)
 	{
-		if (Mathf.Abs (direction) < 0.01f)
-			return;
 		currentRailPosition = Mathf.Clamp (currentRailPosition + direction, 0, 1);
 		SetRailPosition (currentRailPosition);
 	}
@@ -62,11 +55,6 @@ public class GameCamera : MonoBehaviour
 		
 		cameraTransform.position = Vector3.Lerp (cameraTransform.position, targetPosition, movementCurve.Evaluate(Time.deltaTime * transitionSpeed));
 		transitioning = Vector3.Distance (cameraTransform.position, targetPosition) > 1.0f;
-
-		if (!transitioning) {
-			if (cameraInput != null)
-				cameraInput.enabled = true;
-		}
 	}
 	
 }
