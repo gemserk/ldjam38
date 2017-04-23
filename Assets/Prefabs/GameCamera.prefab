@@ -137,8 +137,8 @@ MonoBehaviour:
   horizontalAxisName: CameraHorizontal
   verticalAxisName: CameraVertical
   targetTransform: {fileID: 4130990054462908}
-  speedHorizontal: -15
-  speedVertical: -15
+  speedHorizontal: 15
+  speedVertical: 15
 --- !u!124 &124400299660329680
 Behaviour:
   m_ObjectHideFlags: 1

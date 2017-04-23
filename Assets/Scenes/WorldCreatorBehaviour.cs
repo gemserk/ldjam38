@@ -39,10 +39,10 @@ namespace Gemserk
 
     public class WorldCreatorBehaviour : MonoBehaviour
     {
-
         public GameObject cubePrefab;
 
-        [Tooltip("No sea nabo, es vector de enteros")] public Vector3 worldSize;
+        [Tooltip("No sea nabo, es vector de enteros")] 
+		public Vector3 worldSize;
 
         // Use this for initialization
         void Start()
