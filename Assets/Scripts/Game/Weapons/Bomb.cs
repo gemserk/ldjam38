@@ -11,10 +11,17 @@ namespace Assets.Scripts.Game.Weapons
             Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, explodeRadius);
             foreach (var collider in hitColliders)
             {
-                if (collider.gameObject == this.gameObject) continue;
+                if (collider.gameObject == this.gameObject) 
+					continue;
 
-                GameObject.Destroy(collider.gameObject);
-            }
+				var projectileHitReceiver = collider.GetComponent<ProjectileHitReceiver> ();
+
+				if (projectileHitReceiver != null) {
+					projectileHitReceiver.OnProjectileHit (this);
+				} else {
+					GameObject.Destroy (collider.gameObject);
+				}
+			}
         }
     }
 }

@@ -9,7 +9,7 @@ public class TestGame : GameMode {
 	public Character[] characters;
 
 	// TODO: the camera pos could be calculated dynamically based on character pos...
-	public Transform[] cameraPositions;
+	public float[] cameraRailPositions = new float[] { 0.1f, 0.9f };
 
 	public SimpleMovementCharacter currentMovement;
 	public SimpleAttackInput currentAttack;
@@ -20,6 +20,8 @@ public class TestGame : GameMode {
 
 	public Weapon weaponPrefab;
 
+	public Hud hud;
+
 	void Start()
 	{
 		for (int i = 0; i < characters.Length; i++) {
@@ -27,6 +29,7 @@ public class TestGame : GameMode {
 			character.Equip (GameObject.Instantiate (weaponPrefab));
 			characters [i].EnterWalkMode ();
 			characters [i].SetGameMode (this);
+			characters [i].SetHud (hud);
 		}
 
 		currentMovement.character = characters [currentCharacter];
@@ -40,6 +43,11 @@ public class TestGame : GameMode {
 		if (character == characters [currentCharacter]) {
 			StartCoroutine (SwitchPlayers ());
 		}
+	}
+
+	public override void OnCharacterDeath (Character character)
+	{
+		
 	}
 
 	#endregion
@@ -59,7 +67,8 @@ public class TestGame : GameMode {
 
 		NextPlayer ();
 
-		gameCamera.CenterOn (cameraPositions [currentCharacter]);
+		gameCamera.SetRailPosition (cameraRailPositions [currentCharacter]);
+//		gameCamera.CenterOn (cameraPositions [currentCharacter]);
 
 		yield return new WaitWhile (gameCamera.IsTransitioning);
 
@@ -72,7 +81,8 @@ public class TestGame : GameMode {
 
 		if (Input.GetButtonUp (switchCharacterButton)) {
 			NextPlayer();
-			gameCamera.CenterOn (cameraPositions [currentCharacter]);
+			gameCamera.SetRailPosition (cameraRailPositions [currentCharacter]);
+//			gameCamera.CenterOn (cameraPositions [currentCharacter]);
 		}
 
 	}
