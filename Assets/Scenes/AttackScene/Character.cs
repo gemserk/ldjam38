@@ -3,11 +3,41 @@ using Assets.Scripts.Game.Weapons;
 
 public class Character : MonoBehaviour {
 
-	public Transform weaponAttachPoint;
+	public WeaponControl weaponControl;
 
-	public void Equip(Weapon weapon)
+	public bool InAttackMode ()
 	{
-		weapon.transform.SetParent (weaponAttachPoint, false); 
+		return weaponControl.IsLoaded ();
+	}
+
+	public void Equip(Weapon newWeapon)
+	{
+		weaponControl.Equip (newWeapon);
+	}
+
+	public void EnterWalkMode()
+	{
+		weaponControl.Unload ();
+	}
+
+	public void EnterAttackMode()
+	{
+		weaponControl.Load ();
+	}
+
+	public void AimWeapon(float direction)
+	{
+		weaponControl.Aim (direction);
+	}
+
+	public bool IsChargingAttack ()
+	{
+		return weaponControl.IsChargingAttack ();
+	}
+
+	public void ChargeAttack (bool charging)
+	{
+		weaponControl.ChargeAttack (charging, Time.deltaTime);
 	}
 
 }

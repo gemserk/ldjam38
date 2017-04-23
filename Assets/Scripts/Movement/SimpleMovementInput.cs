@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-public class SimpleMovement : MonoBehaviour {
+public class SimpleMovementInput : MonoBehaviour {
 
 	public string moveHorizontalAxis;
 	public string moveForwardAxis;
 
-	public SimpleMovementCharacter character;
+	[FormerlySerializedAs("character")]
+	public SimpleMovementCharacter simpleMovement;
 
 	public float movementCooldown;
 
@@ -13,6 +15,12 @@ public class SimpleMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (simpleMovement == null)
+			return;
+
+		if (simpleMovement.character.InAttackMode ())
+			return;
 
 		float moveHorizontal = Input.GetAxis (moveHorizontalAxis);
 		float moveVertical = Input.GetAxis (moveForwardAxis);
@@ -30,16 +38,16 @@ public class SimpleMovement : MonoBehaviour {
 		}
 
 		if (moveHorizontal > 0) {
-			character.MoveLeft ();
+			simpleMovement.MoveLeft ();
 			lastMovement = Time.realtimeSinceStartup;
 		} else if (moveHorizontal < 0) {
-			character.MoveRight ();
+			simpleMovement.MoveRight ();
 			lastMovement = Time.realtimeSinceStartup;
 		} else if (moveVertical > 0) {
-			character.MoveForward ();
+			simpleMovement.MoveForward ();
 			lastMovement = Time.realtimeSinceStartup;
 		} else if (moveVertical < 0) {
-			character.MoveBackwards ();
+			simpleMovement.MoveBackwards ();
 			lastMovement = Time.realtimeSinceStartup;
 		} 
 		

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4890248273568848}
   - component: {fileID: 114703395221713832}
+  - component: {fileID: 114887715956102290}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -197,4 +198,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0792c8900412d84ebd7845e04d7a4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAttachPoint: {fileID: 4211341312467940}
+  weaponControl: {fileID: 114887715956102290}
+--- !u!114 &114887715956102290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272819811570962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ae00fdace69c54eb6ab7c989797c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachPoint: {fileID: 4211341312467940}
+  aimSpeed: -50
+  chargeSpeed: 1
+  chargeCooldown: 1

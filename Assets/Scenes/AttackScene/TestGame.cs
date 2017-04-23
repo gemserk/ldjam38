@@ -11,6 +11,7 @@ public class TestGame : MonoBehaviour {
 	public Transform[] cameraPositions;
 
 	public SimpleMovementCharacter currentMovement;
+	public SimpleAttackInput currentAttack;
 
 	int currentCharacter = 0;
 
@@ -23,17 +24,28 @@ public class TestGame : MonoBehaviour {
 		for (int i = 0; i < characters.Length; i++) {
 			var character = characters [i];
 			character.Equip (GameObject.Instantiate (weaponPrefab));
+			characters [i].EnterWalkMode ();
 		}
 
 		currentMovement.character = characters [currentCharacter];
+		currentAttack.character = characters [currentCharacter];
 	}
 
 	// Update is called once per frame
 	void Update () {
 
 		if (Input.GetButtonUp (switchCharacterButton)) {
+
+			// reset characters to walk mode 
+
+			for (int i = 0; i < characters.Length; i++) {
+				characters [i].EnterWalkMode ();
+			}
+
 			currentCharacter = (currentCharacter + 1) % characters.Length;
+
 			currentMovement.character = characters [currentCharacter];
+			currentAttack.character = characters [currentCharacter];
 
 			gameCamera.CenterOn (cameraPositions [currentCharacter]);
 		}

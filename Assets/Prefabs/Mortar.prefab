@@ -228,17 +228,17 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      value: 0.30593872
+      inSlope: 0.6940613
+      outSlope: 0.6940613
+      tangentMode: 34
     - serializedVersion: 2
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 0.6940613
+      outSlope: 0.6940613
+      tangentMode: 34
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  forceMultiplier: 10
+  forceMultiplier: 20
