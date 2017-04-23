@@ -1302,11 +1302,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 202731849}
+  transitionSpeed: 10
+  cameraInput: {fileID: 202731850}
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!4 &202731849 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4130990054462908, guid: 6e7dcfe0a72fe964b8f0025852adf6a2,
     type: 2}
   m_PrefabInternal: {fileID: 1310254158}
+--- !u!114 &202731850 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114385820508468004, guid: 6e7dcfe0a72fe964b8f0025852adf6a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1310254158}
+  m_Script: {fileID: 11500000, guid: 6a129e1c90e19ca4192e117d4715ad16, type: 3}
 --- !u!1 &262073567
 GameObject:
   m_ObjectHideFlags: 0
