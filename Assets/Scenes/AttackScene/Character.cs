@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Game.Weapons;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour, ProjectileHitReceiver {
 
 	Hud hud;
 
 	public WeaponControl weaponControl;
 
 	GameMode gameMode;
+
+	public CharacterModel characterModel;
 
 	public void SetHud(Hud hud)
 	{
@@ -18,6 +20,18 @@ public class Character : MonoBehaviour {
 	{
 		this.gameMode = gameMode;	
 	}
+
+	#region ProjectileHitReceiver implementation
+	public void OnProjectileHit (Bomb bomb)
+	{
+		// if no life then die...
+
+		if (characterModel != null)
+			characterModel.DamageReceived ();
+
+		gameMode.OnCharacterDeath (this);
+	}
+	#endregion
 
 	public bool InAttackMode ()
 	{

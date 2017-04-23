@@ -45,6 +45,11 @@ public class TestGame : GameMode {
 		}
 	}
 
+	public override void OnCharacterDeath (Character character)
+	{
+		
+	}
+
 	#endregion
 
 	IEnumerator SwitchPlayers()
