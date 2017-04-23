@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Game.Weapons
 {
-    public class ProjectileWeapon : Weapon
+	public class ProjectileWeapon : Weapon
     {
         public GameObject projectile;
 
@@ -23,5 +23,14 @@ namespace Assets.Scripts.Game.Weapons
 
             rigidBody.AddForce(force, ForceMode.Impulse);
         }
+
+		#region implemented abstract members of Weapon
+
+		public override Transform GetFireTransform ()
+		{
+			return fireTransform;
+		}
+
+		#endregion
     }
 }

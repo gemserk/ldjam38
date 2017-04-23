@@ -2,11 +2,10 @@
 
 namespace Assets.Scripts.Game.Weapons
 {
-    public class Weapon : MonoBehaviour
+	public abstract class Weapon : MonoBehaviour
     {
-        public virtual  void Fire(float charge)
-        {
+		public abstract void Fire (float charge);
 
-        }
+		public abstract Transform GetFireTransform();
     }
 }

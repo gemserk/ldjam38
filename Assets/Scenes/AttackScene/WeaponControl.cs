@@ -21,9 +21,14 @@ public class WeaponControl : MonoBehaviour
 
 	bool isCharging;
 
-	public WeaponControl(Transform attachPoint)
+	public float GetCharge()
 	{
-		this.attachPoint = attachPoint;
+		return charge;
+	}
+
+	public Weapon GetWeapon()
+	{
+		return weapon;
 	}
 
 	public void Equip(Weapon newWeapon)
@@ -84,6 +89,8 @@ public class WeaponControl : MonoBehaviour
 
 			charge = 0;
 			isCharging = true;
+
+			return;
 		}
 
 		if (isCharging) {
@@ -99,6 +106,8 @@ public class WeaponControl : MonoBehaviour
 				isCharging = false;
 
 				lastChargingTime = Time.realtimeSinceStartup;
+		
+				charge = 0.0f;
 			}
 		}
 

@@ -3,9 +3,16 @@ using Assets.Scripts.Game.Weapons;
 
 public class Character : MonoBehaviour {
 
+	Hud hud;
+
 	public WeaponControl weaponControl;
 
 	GameMode gameMode;
+
+	public void SetHud(Hud hud)
+	{
+		this.hud = hud;
+	}
 
 	public void SetGameMode(GameMode gameMode)
 	{
@@ -48,6 +55,11 @@ public class Character : MonoBehaviour {
 			if (gameMode != null)
 				gameMode.OnCharacterFired(this);
 		});
+
+		if (hud != null) {
+			if (hud.chargeIndicator != null)
+				hud.chargeIndicator.UpdateCharge (weaponControl);
+		}
 	}
 
 }

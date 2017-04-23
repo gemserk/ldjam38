@@ -20,6 +20,8 @@ public class TestGame : GameMode {
 
 	public Weapon weaponPrefab;
 
+	public Hud hud;
+
 	void Start()
 	{
 		for (int i = 0; i < characters.Length; i++) {
@@ -27,6 +29,7 @@ public class TestGame : GameMode {
 			character.Equip (GameObject.Instantiate (weaponPrefab));
 			characters [i].EnterWalkMode ();
 			characters [i].SetGameMode (this);
+			characters [i].SetHud (hud);
 		}
 
 		currentMovement.character = characters [currentCharacter];
