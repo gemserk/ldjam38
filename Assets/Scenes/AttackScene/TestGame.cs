@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Game.Weapons;
+using System.Collections;
 
 public class TestGame : GameMode {
 
@@ -37,17 +38,41 @@ public class TestGame : GameMode {
 	public override void OnCharacterFired (Character character)
 	{
 		if (character == characters [currentCharacter]) {
-			NextPlayer ();
+			StartCoroutine (SwitchPlayers ());
 		}
 	}
 
 	#endregion
+
+	IEnumerator SwitchPlayers()
+	{
+		currentMovement.enabled = false;
+		currentAttack.enabled = false;
+
+		yield return new WaitForSeconds (0.25f);
+
+		// FOLLOW PROJECTILE SEQUENCE INITIATED
+
+		// SHOW EXPLOSIONS, WAIT FOR A WHILE
+
+		// CENTER ON OTHER CHARACTER....
+
+		NextPlayer ();
+
+		gameCamera.CenterOn (cameraPositions [currentCharacter]);
+
+		yield return new WaitWhile (gameCamera.IsTransitioning);
+
+		currentMovement.enabled = true;
+		currentAttack.enabled = true;
+	}
 
 	// Update is called once per frame
 	void Update () {
 
 		if (Input.GetButtonUp (switchCharacterButton)) {
 			NextPlayer();
+			gameCamera.CenterOn (cameraPositions [currentCharacter]);
 		}
 
 	}
@@ -64,7 +89,5 @@ public class TestGame : GameMode {
 
 		currentMovement.character = characters [currentCharacter];
 		currentAttack.character = characters [currentCharacter];
-
-		gameCamera.CenterOn (cameraPositions [currentCharacter]);
 	}
 }

@@ -14,6 +14,11 @@ public class GameCamera : MonoBehaviour
 
 	public AnimationCurve movementCurve;
 
+	public bool IsTransitioning()
+	{
+		return transitioning;
+	}
+
 	public void CenterOn (Transform transform)
 	{
 		targetPosition = transform.position;

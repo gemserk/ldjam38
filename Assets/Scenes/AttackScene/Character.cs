@@ -44,7 +44,7 @@ public class Character : MonoBehaviour {
 
 	public void ChargeAttack (bool charging)
 	{
-		weaponControl.ChargeAttack (charging, Time.deltaTime, delegate(WeaponControl weaponControl) {
+		weaponControl.ChargeAttack (charging, Time.deltaTime, delegate(WeaponControl w) {
 			if (gameMode != null)
 				gameMode.OnCharacterFired(this);
 		});
