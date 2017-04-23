@@ -18,5 +18,3 @@ public abstract class WorldMovement : MonoBehaviour
 	public abstract Vector3 Move(Vector3 currentPosition, Vector2 direction, int heightTolerance);
 
 }
-
-// TODO: check nearby blocks and height difference and move there...
