@@ -211,6 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachPoint: {fileID: 4211341312467940}
-  aimSpeed: -50
+  aimSpeed: -75
   chargeSpeed: 1
   chargeCooldown: 1

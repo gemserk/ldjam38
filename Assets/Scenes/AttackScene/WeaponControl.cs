@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.Game.Weapons;
+using System;
 
 public class WeaponControl : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class WeaponControl : MonoBehaviour
 		return isCharging;
 	}
 
-	public void ChargeAttack (bool charging, float dt)
+	public void ChargeAttack (bool charging, float dt, Action<WeaponControl> callback)
 	{
 		if (weapon == null)
 			return;
@@ -91,6 +92,10 @@ public class WeaponControl : MonoBehaviour
 
 			if (charge > 1 || !charging) {
 				weapon.Fire (charge);
+
+				if (callback != null)
+					callback (this);
+
 				isCharging = false;
 
 				lastChargingTime = Time.realtimeSinceStartup;

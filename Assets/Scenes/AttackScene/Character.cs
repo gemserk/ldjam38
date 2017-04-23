@@ -5,6 +5,13 @@ public class Character : MonoBehaviour {
 
 	public WeaponControl weaponControl;
 
+	GameMode gameMode;
+
+	public void SetGameMode(GameMode gameMode)
+	{
+		this.gameMode = gameMode;	
+	}
+
 	public bool InAttackMode ()
 	{
 		return weaponControl.IsLoaded ();
@@ -37,7 +44,10 @@ public class Character : MonoBehaviour {
 
 	public void ChargeAttack (bool charging)
 	{
-		weaponControl.ChargeAttack (charging, Time.deltaTime);
+		weaponControl.ChargeAttack (charging, Time.deltaTime, delegate(WeaponControl weaponControl) {
+			if (gameMode != null)
+				gameMode.OnCharacterFired(this);
+		});
 	}
 
 }
