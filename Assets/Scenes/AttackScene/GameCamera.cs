@@ -49,6 +49,8 @@ public class GameCamera : MonoBehaviour
 
 	public void MoveRailPosition(float direction)
 	{
+		if (Mathf.Abs (direction) < 0.01f)
+			return;
 		currentRailPosition = Mathf.Clamp (currentRailPosition + direction, 0, 1);
 		SetRailPosition (currentRailPosition);
 	}

@@ -10952,9 +10952,9 @@ MonoBehaviour:
   characters:
   - {fileID: 1946399269}
   - {fileID: 1124405236}
-  cameraPositions:
-  - {fileID: 1248999877}
-  - {fileID: 414025597}
+  cameraRailPositions:
+  - 0.9
+  - 0.1
   currentMovement: {fileID: 900836824}
   currentAttack: {fileID: 900836825}
   gameCamera: {fileID: 202731848}
