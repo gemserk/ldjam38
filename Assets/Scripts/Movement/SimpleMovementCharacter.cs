@@ -27,5 +27,10 @@ public class SimpleMovementCharacter : MonoBehaviour
 	{
 		character.transform.position = worldMovement.Move(character.transform.position, character.transform.forward * -1, heightTolerance);
 	}
+
+    public void Update()
+    {
+        character.transform.position = worldMovement.Move(character.transform.position, Vector3.zero, heightTolerance);
+    }
 	
 }
