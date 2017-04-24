@@ -8,7 +8,7 @@ public class SimpleMovementCharacter : MonoBehaviour
 
 	public WorldMovement worldMovement;
 
-	 public float deathTorque = 1;
+	public float deathTorque = 1;
 
 	public void MoveLeft ()
 	{
@@ -21,7 +21,7 @@ public class SimpleMovementCharacter : MonoBehaviour
 
 	public void MoveRight()
 	{
-	    if (!character.IsDead)
+		if (!character.IsDead && worldMovement != null)
 	    {
 	        character.transform.position = worldMovement.Move(character.transform.position, character.transform.right * -1,
 	            0);
@@ -30,7 +30,7 @@ public class SimpleMovementCharacter : MonoBehaviour
 
 	public void MoveForward()
 	{
-	    if (!character.IsDead)
+		if (!character.IsDead && worldMovement != null)
 	    {
 	        character.transform.position = worldMovement.Move(character.transform.position, character.transform.forward,
 	            0);
@@ -39,7 +39,7 @@ public class SimpleMovementCharacter : MonoBehaviour
 
 	public void MoveBackwards()
 	{
-	    if (!character.IsDead)
+		if (!character.IsDead && worldMovement != null)
 	    {
 	        character.transform.position = worldMovement.Move(character.transform.position,
 	            character.transform.forward * -1, 0);
@@ -48,7 +48,7 @@ public class SimpleMovementCharacter : MonoBehaviour
 
     public void Update()
     {
-        if (!character.IsDead)
+		if (!character.IsDead && worldMovement != null)
         {
             var currentPosition = character.transform.position;
             var newPosition = worldMovement.Move(currentPosition, Vector3.zero, 0);

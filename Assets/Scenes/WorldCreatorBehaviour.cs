@@ -2,7 +2,6 @@
 using System.Linq;
 using Gemserk.Utils;
 using UnityEngine;
-using UnityEditor;
 
 namespace Gemserk
 {
@@ -25,12 +24,17 @@ namespace Gemserk
                     z = (-worldSize.z * cubeSize.z) * 0.5f;
                     for (int k = 0; k < worldSize.z; k++)
                     {
-						var cubeObject = PrefabUtility.InstantiatePrefab (cubePrefab) as GameObject;
-                        Undo.RegisterCreatedObjectUndo(cubeObject, "RegeneratingCubes");
+						#if UNITY_EDITOR
+						var cubeObject = UnityEditor.PrefabUtility.InstantiatePrefab (cubePrefab) as GameObject;
+						UnityEditor.Undo.RegisterCreatedObjectUndo(cubeObject, "RegeneratingCubes");
+
 						cubeObject.transform.SetParent (parent);
                         cubeObject.transform.localPosition = new Vector3(x, y, z);
                         cubeObject.gameObject.name = String.Format("{0}-{1}-{2} - ({3},{4},{5})", (int)i, j, k, (int)worldSize.x,
                             (int)worldSize.y, (int)worldSize.z);
+
+						#endif
+
                         z += cubeSize.z;
                     }
                     y += cubeSize.y;
@@ -60,8 +64,10 @@ namespace Gemserk
 
             this.transform.GetChildren(false).ToList().ForEach(transform1 =>
             {
-                Undo.DestroyObjectImmediate(transform1.gameObject);
-            });
+				#if UNITY_EDITOR
+				UnityEditor.Undo.DestroyObjectImmediate(transform1.gameObject);
+				#endif
+			});
 
             worldCreator.CreateWorld(this.transform, cubePrefab, worldSize);
         }

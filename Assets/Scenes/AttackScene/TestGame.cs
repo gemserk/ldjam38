@@ -3,6 +3,22 @@ using Assets.Scripts.Game.Weapons;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+public static class ArrayExtensions
+{
+	public static T RandomItem<T>(this T[] array)
+	{
+		return array [UnityEngine.Random.Range (0, array.Length)];
+	}
+}
+
+public static class TransformExtensions
+{
+	public static Transform RandomChild(this Transform t)
+	{
+		return t.GetChild(UnityEngine.Random.Range(0, t.childCount));
+	}
+}
+
 public class TestGame : GameMode {
 
 	public GameMenu gameMenu;
@@ -13,6 +29,8 @@ public class TestGame : GameMode {
 
 	// TODO: the camera pos could be calculated dynamically based on character pos...
 	public float[] cameraRailPositions = new float[] { 0.1f, 0.9f };
+
+	public SimpleMovementInput currentMovementInput;
 
 	public SimpleMovementCharacter currentMovement;
 	public SimpleAttackInput currentAttack;
@@ -25,6 +43,10 @@ public class TestGame : GameMode {
 
 	public Hud hud;
 
+	public GameObject possiblePlatformsContainer;
+
+	public WorldMovement worldMovement;
+
 	void Start()
 	{
 		for (int i = 0; i < characters.Length; i++) {
@@ -33,10 +55,34 @@ public class TestGame : GameMode {
 			characters [i].EnterWalkMode ();
 			characters [i].SetGameMode (this);
 			characters [i].SetHud (hud);
+
+			var simpleMovement = characters [i].GetComponent<SimpleMovementCharacter> ();
+			if (simpleMovement != null) {
+				simpleMovement.worldMovement = worldMovement;
+			}
+
+			// create platform for player.
+
+			if (possiblePlatformsContainer != null && possiblePlatformsContainer.transform.childCount > 0) {
+				var platformSource = possiblePlatformsContainer.transform.RandomChild ();
+
+//				var playerPlatformSource = possiblePlatforms.RandomItem ();
+				var playerPlatform = GameObject.Instantiate (platformSource);
+				playerPlatform.gameObject.SetActive (true);
+
+				playerPlatform.transform.position = character.transform.position;
+				playerPlatform.transform.localEulerAngles = new Vector3 (0, 90 * UnityEngine.Random.Range (0, 4), 0);
+			}
 		}
 
-		currentMovement.character = characters [currentCharacter];
+		if (currentMovement != null)
+			currentMovement.character = characters [currentCharacter];
+		
 		currentAttack.character = characters [currentCharacter];
+
+		if (currentMovementInput != null) {
+			currentMovementInput.simpleMovement = characters [currentCharacter].GetComponent<SimpleMovementCharacter> ();
+		}
 
 		if (gameMenu != null) {
 			gameMenu.Init(false);
@@ -88,8 +134,12 @@ public class TestGame : GameMode {
 
 	IEnumerator SwitchPlayers()
 	{
-		currentMovement.enabled = false;
+		if (currentMovement != null)
+			currentMovement.enabled = false;
 		currentAttack.enabled = false;
+
+		if (currentMovementInput != null)
+			currentMovementInput.enabled = false;
 
 		yield return new WaitForSeconds (switchPlayersDelay);
 
@@ -106,8 +156,12 @@ public class TestGame : GameMode {
 
 		yield return new WaitWhile (gameCamera.IsTransitioning);
 
-		currentMovement.enabled = true;
+		if (currentMovement != null)
+			currentMovement.enabled = true;
 		currentAttack.enabled = true;
+
+		if (currentMovementInput != null)
+			currentMovementInput.enabled = true;
 	}
 
 	// Update is called once per frame
@@ -131,7 +185,13 @@ public class TestGame : GameMode {
 
 		currentCharacter = (currentCharacter + 1) % characters.Length;
 
-		currentMovement.character = characters [currentCharacter];
+		if (currentMovement != null)
+			currentMovement.character = characters [currentCharacter];
+		
 		currentAttack.character = characters [currentCharacter];
+
+		if (currentMovementInput != null) {
+			currentMovementInput.simpleMovement = characters [currentCharacter].GetComponent<SimpleMovementCharacter> ();
+		}
 	}
 }
