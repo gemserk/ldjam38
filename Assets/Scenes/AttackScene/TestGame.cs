@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Game.Weapons;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TestGame : GameMode {
+
+	public GameMenu gameMenu;
 
 	public string switchCharacterButton;
 
@@ -34,6 +37,35 @@ public class TestGame : GameMode {
 
 		currentMovement.character = characters [currentCharacter];
 		currentAttack.character = characters [currentCharacter];
+
+		if (gameMenu != null) {
+			gameMenu.Init(false);
+		
+			gameMenu.openCallback = delegate(GameMenu menu) {
+				LeanTween.cancelAll(gameObject);
+				LeanTween.value(gameObject, Time.timeScale, 0.0f, 2.0f).setUseEstimatedTime(true).setEase(LeanTweenType.easeOutQuad).setOnUpdate(delegate(float v) {
+					Time.timeScale = v;
+				});
+			};
+
+			gameMenu.closeCallback = delegate(GameMenu menu) {
+				LeanTween.cancelAll(gameObject);
+				LeanTween.value(gameObject, Time.timeScale, 1.0f, 0.25f).setUseEstimatedTime(true).setOnUpdate(delegate(float v) {
+					Time.timeScale = v;
+				});
+			};
+
+			gameMenu.restartCallback = delegate(GameMenu obj) {
+				RestartGame();
+			};
+		}
+	}
+
+	void RestartGame()
+	{
+		LeanTween.cancelAll(gameObject);
+		Time.timeScale = 1.0f;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	#region implemented abstract members of GameMode
@@ -61,11 +93,11 @@ public class TestGame : GameMode {
 
 		yield return new WaitForSeconds (switchPlayersDelay);
 
-		// FOLLOW PROJECTILE SEQUENCE INITIATED
-
-		// SHOW EXPLOSIONS, WAIT FOR A WHILE
-
-		// CENTER ON OTHER CHARACTER....
+	    Bomb projectile;
+	    while((projectile = GameObject.FindObjectOfType<Bomb>()) != null)
+	    {
+	        yield return null;
+	    }
 
 		NextPlayer ();
 

@@ -29,11 +29,7 @@ public class GameCameraFixed : GameCamera
 		return transitioning;
 	}
 
-	public void CenterOn (Transform transform)
-	{
-		targetPosition = transform.position;
-		transitioning = true;
-	}
+
 
 	public override void SetRailPosition(float t)
 	{
@@ -48,7 +44,12 @@ public class GameCameraFixed : GameCamera
 		SetRailPosition (currentRailPosition);
 	}
 
-	void LateUpdate()
+    public override void CenterOn(Vector3 position)
+    {
+
+    }
+
+    void LateUpdate()
 	{
 		if (!transitioning)
 			return;
