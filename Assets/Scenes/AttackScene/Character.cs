@@ -11,7 +11,18 @@ public class Character : MonoBehaviour, ProjectileHitReceiver {
 
 	public CharacterModel characterModel;
 
+	public float rotationSpeed = 15.0f;
+
+	float walkRotation;
+	float attackRotation;
+
     public bool IsDead = false;
+
+	void Start()
+	{
+		walkRotation = transform.localEulerAngles.y;
+		attackRotation = transform.localEulerAngles.y;
+	}
 
 	public void SetHud(Hud hud)
 	{
@@ -48,16 +59,24 @@ public class Character : MonoBehaviour, ProjectileHitReceiver {
 	public void EnterWalkMode()
 	{
 		weaponControl.Unload ();
+		transform.localEulerAngles = new Vector3(0, walkRotation, 0);
 	}
 
 	public void EnterAttackMode()
 	{
 		weaponControl.Load ();
+		transform.localEulerAngles = new Vector3(0, attackRotation, 0);
 	}
 
 	public void AimWeapon(float direction)
 	{
 		weaponControl.Aim (direction);
+	}
+
+	public void Rotate (float direction)
+	{
+		transform.Rotate(new Vector3(0, direction * rotationSpeed, 0));
+		attackRotation = transform.localEulerAngles.y;
 	}
 
 	public bool IsChargingAttack ()

@@ -2,6 +2,7 @@
 
 public class SimpleAttackInput : MonoBehaviour {
 
+	public string horizontalAxisName;
 	public string verticalAxisName;
 
 	public string weaponActionName;
@@ -26,6 +27,9 @@ public class SimpleAttackInput : MonoBehaviour {
 			}
 
 			var vertical = Input.GetAxis (verticalAxisName);
+			var horizontal = Input.GetAxis (horizontalAxisName);
+
+			character.Rotate (horizontal * Time.deltaTime);
 
 			character.AimWeapon(vertical * Time.deltaTime);
 			character.ChargeAttack (Input.GetButton (chargeActionName));
