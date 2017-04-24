@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 
 namespace Gemserk.LD38.Game
 {
@@ -112,16 +112,18 @@ namespace Gemserk.LD38.Game
 
         public void LateUpdate()
         {
-            if (Application.isPlaying && !transitioning)
-                return;
-//
-            var newRailPosition = Mathf.Lerp(oldRailPosition, currentRailPosition,
-                Time.deltaTime * transitionSpeed);
-
-            if (Mathf.Abs(newRailPosition - currentRailPosition) < 0.1f)
+            var newRailPosition = oldRailPosition;
+            if (!Application.isPlaying || transitioning)
             {
-                newRailPosition = currentRailPosition;
-                transitioning = false;
+//
+                newRailPosition = Mathf.Lerp(oldRailPosition, currentRailPosition,
+                    Time.deltaTime * transitionSpeed);
+
+                if (Mathf.Abs(newRailPosition - currentRailPosition) < 0.1f)
+                {
+                    newRailPosition = currentRailPosition;
+                    transitioning = false;
+                }
             }
 
             var newCameraTarget = GetRailsPosition(newRailPosition);
