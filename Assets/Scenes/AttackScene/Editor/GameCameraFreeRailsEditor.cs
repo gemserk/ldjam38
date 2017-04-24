@@ -6,6 +6,12 @@ namespace Gemserk.LD38.Game
     [CustomEditor(typeof(GameCameraFreeRails)), CanEditMultipleObjects]
     public class GameCameraFreeRailsEditor : Editor
     {
+//        public override void OnInspectorGUI()
+//        {
+//            base.OnInspectorGUI();
+//            (target as GameCameraFreeRails).LateUpdate();
+//        }
+
         public void OnSceneGUI()
         {
             GameCameraFreeRails component = (GameCameraFreeRails)target;

@@ -8,7 +8,10 @@ namespace Gemserk.LD38.Game
     {
         public Transform cameraTransform;
 
-        bool transitioning;
+
+        [ReadOnly]
+        [SerializeField]
+        private bool transitioning;
 
         Vector3 targetPosition;
 
@@ -59,17 +62,24 @@ namespace Gemserk.LD38.Game
 
         public void LateUpdate()
         {
-            if (!transitioning)
+
+            if (Application.isPlaying && !transitioning)
                 return;
 //
             var newRailPosition = Mathf.Lerp(oldRailPosition, currentRailPosition,
                 Time.deltaTime * transitionSpeed);
 
+            if (Mathf.Abs(newRailPosition - currentRailPosition) < 0.1f)
+            {
+                newRailPosition = currentRailPosition;
+                transitioning = false;
+            }
+
             var newCameraTarget = GetRailsPosition(newRailPosition);
 
             cameraTransform.position = newCameraTarget + cameraOffset;
             cameraTransform.LookAt(newCameraTarget);
-            transitioning = Vector3.Distance (cameraTransform.position, targetPosition) > 1.0f;
+
             oldRailPosition = newRailPosition;
         }
 
@@ -77,7 +87,6 @@ namespace Gemserk.LD38.Game
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(targetPosition, 1);
-
         }
     }
 }
