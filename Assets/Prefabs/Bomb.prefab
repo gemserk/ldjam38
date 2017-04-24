@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4490449864604210}
   - component: {fileID: 54526314348132044}
   - component: {fileID: 114709911020330742}
+  - component: {fileID: 114581878944360430}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -140,6 +141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileHitReceiverDelegateObject: {fileID: 1250858432019128}
+--- !u!114 &114581878944360430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250858432019128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e34039280c4a91b39f5c2d9574b37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114709911020330742
 MonoBehaviour:
   m_ObjectHideFlags: 1

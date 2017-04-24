@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4798091652467436}
+  - component: {fileID: 114141995334228882}
   m_Layer: 0
   m_Name: Boom
   m_TagString: Untagged
@@ -132,6 +133,17 @@ Transform:
   m_Father: {fileID: 4798091652467436}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114141995334228882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108223710642208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a71317b83c4c3187a86e3bac4d4769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198103308876667138
 ParticleSystem:
   m_ObjectHideFlags: 1
