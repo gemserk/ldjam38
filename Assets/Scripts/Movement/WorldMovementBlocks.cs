@@ -25,7 +25,8 @@ public class WorldMovementBlocks : WorldMovement
 	        return currentPosition;
 	    }
 
-	    var topPosition = firstCube.transform.position;
+		// the size of the character
+		var topPosition = firstCube.transform.position + new Vector3(0.0f, unitVector.y * 0.5f, 0.0f);
 
 	    newPosition = topPosition;// + Vector3.up;
 
