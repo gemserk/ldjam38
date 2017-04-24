@@ -5714,7 +5714,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 114436251424506954, guid: adba175a4bd73444084cc065d0c81d8e,
     type: 2}
   hud: {fileID: 213590274}
-  switchPlayersDelay: 1
+  switchPlayersDelay: 1.5
 --- !u!4 &1516948060
 Transform:
   m_ObjectHideFlags: 0
