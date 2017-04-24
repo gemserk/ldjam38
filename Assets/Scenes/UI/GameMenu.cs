@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using System;
 
 public class GameMenu : MonoBehaviour {
 
 	public CanvasGroup canvasGroup;
 
 	bool open = false;
+
+	public Action<GameMenu> openCallback;
+	public Action<GameMenu> closeCallback;
 
 	public void Init(bool open)
 	{
@@ -21,6 +25,9 @@ public class GameMenu : MonoBehaviour {
 		canvasGroup.blocksRaycasts = true;
 		canvasGroup.alpha = 1;
 		open = true;
+
+		if (openCallback != null)
+			openCallback(this);
 	}
 
 	public void Close()
@@ -29,6 +36,10 @@ public class GameMenu : MonoBehaviour {
 		canvasGroup.blocksRaycasts = false;
 		canvasGroup.alpha = 0;
 		open = false;
+
+		if (closeCallback != null) {
+			closeCallback(this);
+		}
 	}
 
 	public bool IsOpen()

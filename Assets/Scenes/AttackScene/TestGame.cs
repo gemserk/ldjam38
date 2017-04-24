@@ -37,8 +37,21 @@ public class TestGame : GameMode {
 		currentMovement.character = characters [currentCharacter];
 		currentAttack.character = characters [currentCharacter];
 
-		if (gameMenu != null)
+		if (gameMenu != null) {
 			gameMenu.Init(false);
+		
+			gameMenu.openCallback = delegate(GameMenu menu) {
+				LeanTween.value(Time.timeScale, 0.0f, 2.0f).setUseEstimatedTime(true).setEase(LeanTweenType.easeOutQuad).setOnUpdate(delegate(float v) {
+					Time.timeScale = v;
+				});
+			};
+
+			gameMenu.closeCallback = delegate(GameMenu menu) {
+				LeanTween.value(Time.timeScale, 1.0f, 0.25f).setUseEstimatedTime(true).setOnUpdate(delegate(float v) {
+					Time.timeScale = v;
+				});
+			};
+		}
 	}
 
 	#region implemented abstract members of GameMode
