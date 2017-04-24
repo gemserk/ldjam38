@@ -14,7 +14,7 @@ public class CameraRailInput : CameraInput {
 
 		if (Mathf.Abs (horizontal) < 0.01f)
 			return;
-		gameCamera.MoveRailPosition (horizontal * speedHorizontal * Time.deltaTime);
+	    gameCamera.MoveRailPosition (horizontal * speedHorizontal * Time.deltaTime);
 	}
 
 }
