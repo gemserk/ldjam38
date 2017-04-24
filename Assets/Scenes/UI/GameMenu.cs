@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour {
 
@@ -9,6 +11,23 @@ public class GameMenu : MonoBehaviour {
 
 	public Action<GameMenu> openCallback;
 	public Action<GameMenu> closeCallback;
+
+	public Action<GameMenu> restartCallback;
+
+	public Button resumeButton;
+	public Button restartButton;
+
+	void Start()
+	{
+		resumeButton.onClick.AddListener(delegate() {
+			Close();	
+		});
+
+		restartButton.onClick.AddListener(delegate() {
+			if (restartCallback != null)
+				restartCallback(this);
+		});
+	}
 
 	public void Init(bool open)
 	{

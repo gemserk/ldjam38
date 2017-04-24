@@ -327,6 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 225617765488521706}
+  resumeButton: {fileID: 114128128214835444}
+  restartButton: {fileID: 114314226003546428}
 --- !u!114 &114248043933535742
 MonoBehaviour:
   m_ObjectHideFlags: 1
