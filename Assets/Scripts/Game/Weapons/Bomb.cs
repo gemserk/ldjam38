@@ -15,7 +15,8 @@ namespace Assets.Scripts.Game.Weapons
             if (worldBoundsGO != null)
             {
                 var boxCollider = worldBoundsGO.GetComponent<BoxCollider>();
-                worldBounds = new Bounds(boxCollider.center, boxCollider.size);
+                var boxColliderCenter = boxCollider.transform.localToWorldMatrix.MultiplyPoint3x4(boxCollider.center);
+                worldBounds = new Bounds(boxColliderCenter, boxCollider.size);
             }
         }
 
