@@ -1981,34 +1981,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4216929785571398, guid: 4a6b0880ff9c62c4f9d6a5c19be15f18,
     type: 2}
   m_PrefabInternal: {fileID: 539386221}
---- !u!1 &540369523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 540369524}
-  m_Layer: 0
-  m_Name: Camara first person
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &540369524
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 540369523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 666561555}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &546184371
 Prefab:
   m_ObjectHideFlags: 0
@@ -2281,7 +2253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4890248273568848, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.5
+      value: -2.471
       objectReference: {fileID: 0}
     - target: {fileID: 4890248273568848, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2306,6 +2278,18 @@ Prefab:
     - target: {fileID: 1272819811570962, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211341312467940, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211341312467940, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211341312467940, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
@@ -2543,7 +2527,6 @@ Transform:
   - {fileID: 400610157}
   - {fileID: 196442281}
   - {fileID: 325802354}
-  - {fileID: 540369524}
   - {fileID: 964801854}
   - {fileID: 1875256955}
   - {fileID: 1750750586}
@@ -3421,7 +3404,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666561555}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &982115985
 Prefab:
@@ -3551,7 +3534,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666561555}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &992965891
 GameObject:
@@ -3579,7 +3562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666561555}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1006682909
 Prefab:
@@ -5733,6 +5716,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 114436251424506954, guid: adba175a4bd73444084cc065d0c81d8e,
     type: 2}
   hud: {fileID: 213590274}
+  switchPlayersDelay: 2
 --- !u!4 &1516948060
 Transform:
   m_ObjectHideFlags: 0
@@ -5875,7 +5859,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666561555}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1559948376
 Prefab:
@@ -6522,7 +6506,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666561555}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1777502836
 Prefab:
@@ -6897,7 +6881,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666561555}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1891118491
 Prefab:

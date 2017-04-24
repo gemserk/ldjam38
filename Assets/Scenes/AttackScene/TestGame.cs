@@ -52,12 +52,14 @@ public class TestGame : GameMode {
 
 	#endregion
 
+	public float switchPlayersDelay = 0.25f;
+
 	IEnumerator SwitchPlayers()
 	{
 		currentMovement.enabled = false;
 		currentAttack.enabled = false;
 
-		yield return new WaitForSeconds (0.25f);
+		yield return new WaitForSeconds (switchPlayersDelay);
 
 		// FOLLOW PROJECTILE SEQUENCE INITIATED
 
