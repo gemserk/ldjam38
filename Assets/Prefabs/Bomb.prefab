@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explodeRadius: 0.5
+  explosionEffectPrefab: {fileID: 1108223710642208, guid: 21ef19d1ce82ae540ac48d1b3515c98e,
+    type: 2}
 --- !u!135 &135219898978668186
 SphereCollider:
   m_ObjectHideFlags: 1
