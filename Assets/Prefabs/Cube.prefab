@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4216929785571398}
   - component: {fileID: 54144268684113652}
   - component: {fileID: 114657393673702178}
+  - component: {fileID: 114010908838367686}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -37,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4824667506084938}
   - component: {fileID: 65002038343420156}
+  - component: {fileID: 114357081785559026}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -168,6 +170,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114010908838367686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038980764172740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84102993f8230bc43b0e64557e9047a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: d59b66b662cec8c4ebaa016c894976b8, type: 2}
+  - {fileID: 2100000, guid: 694c9ba2d9da6444d8c6fc4f58274a89, type: 2}
+  - {fileID: 2100000, guid: 72a9be015e39bce4795c73694662f03a, type: 2}
+  objectRenderer: {fileID: 23796278412478698}
+--- !u!114 &114357081785559026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180841956833880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c56fe5ec494468479701ac9373be83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileHitReceiverDelegateObject: {fileID: 1038980764172740}
 --- !u!114 &114657393673702178
 MonoBehaviour:
   m_ObjectHideFlags: 1

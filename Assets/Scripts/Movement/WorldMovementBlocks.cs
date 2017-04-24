@@ -7,8 +7,6 @@ public class WorldMovementBlocks : WorldMovement
 {
 	public Vector3 unitVector = new Vector3(1, 1, 1);
 
-	public float boxChecksize = 0.2f;
-
 	#region implemented abstract members of WorldMovement
 	public override Vector3 Move (Vector3 currentPosition, Vector3 direction, int heightTolerance)
 	{
