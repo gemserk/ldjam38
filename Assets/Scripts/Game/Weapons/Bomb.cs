@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Game.Weapons
 {
-    public class Bomb : MonoBehaviour
+	public class Bomb : MonoBehaviour, ProjectileHitReceiver
     {
         public float explodeRadius;
 
@@ -23,5 +23,14 @@ namespace Assets.Scripts.Game.Weapons
 				}
 			}
         }
+
+		#region ProjectileHitReceiver implementation
+
+		public void OnProjectileHit (Bomb bomb)
+		{
+			GameObject.Destroy (this.gameObject);
+		}
+
+		#endregion
     }
 }

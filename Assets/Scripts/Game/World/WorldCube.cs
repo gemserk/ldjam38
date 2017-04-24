@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEngine;
+﻿using UnityEngine;
+using Assets.Scripts.Game.Weapons;
 
 namespace Gemserk.LD38.Game.World
 {
-    public class WorldCube : MonoBehaviour
+	public class WorldCube : MonoBehaviour, ProjectileHitReceiver
     {
-
         public Vector3 oldPosition;
 
         public int row;
@@ -23,6 +19,15 @@ namespace Gemserk.LD38.Game.World
             column = Mathf.RoundToInt(pos.z);
             oldPosition = pos;
         }
+
+		#region ProjectileHitReceiver implementation
+
+		public void OnProjectileHit (Bomb bomb)
+		{
+			GameObject.Destroy (this.gameObject);
+		}
+
+		#endregion
     }
 }
 
