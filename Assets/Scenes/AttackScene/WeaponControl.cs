@@ -15,9 +15,12 @@ public class WeaponControl : MonoBehaviour
 
 	public float chargeCooldown = 1.0f;
 
+	public AnimationCurve chargeCurve;
+
 	float lastChargingTime;
 
 	float charge;
+	float realCharge;
 
 	bool isCharging;
 
@@ -88,6 +91,8 @@ public class WeaponControl : MonoBehaviour
 				return;
 
 			charge = 0;
+			realCharge = 0;
+
 			isCharging = true;
 
 			return;
@@ -95,7 +100,9 @@ public class WeaponControl : MonoBehaviour
 
 		if (isCharging) {
 
-			charge += dt * chargeSpeed;
+			realCharge += dt * chargeSpeed;
+
+			charge = chargeCurve.Evaluate(realCharge);
 
 			if (charge > 1 || !charging) {
 				weapon.Fire (charge);

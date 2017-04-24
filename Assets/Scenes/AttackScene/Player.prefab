@@ -117,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466601277003122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 0.783, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4890248273568848}
@@ -276,8 +276,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachPoint: {fileID: 4211341312467940}
   aimSpeed: -75
-  chargeSpeed: 1
+  chargeSpeed: 0.5
   chargeCooldown: 1
+  chargeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114964832766921622
 MonoBehaviour:
   m_ObjectHideFlags: 1

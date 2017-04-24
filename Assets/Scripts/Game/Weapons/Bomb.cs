@@ -6,6 +6,8 @@ namespace Assets.Scripts.Game.Weapons
     {
         public float explodeRadius;
 
+		public GameObject explosionEffectPrefab;
+
         private void OnCollisionEnter(Collision other)
         {
             Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, explodeRadius);
@@ -22,7 +24,12 @@ namespace Assets.Scripts.Game.Weapons
 					GameObject.Destroy (collider.gameObject);
 				}
 			}
-        }
+
+			if (explosionEffectPrefab != null) {
+				var explosionEffect = GameObject.Instantiate (explosionEffectPrefab);
+				explosionEffect.transform.position = this.transform.position;
+			}
+		}
 
 		#region ProjectileHitReceiver implementation
 
