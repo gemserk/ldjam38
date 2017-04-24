@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Gemserk.LD38.Game.World;
 using Gemserk.Utils;
 using UnityEngine;
 
@@ -25,7 +24,7 @@ public class WorldMovementBlocks : WorldMovement
 	        return currentPosition;
 	    }
 
-	    var topPosition = firstCube.transform.position;
+		var topPosition = firstCube.transform.position + new Vector3(0, unitVector.y * 0.5f, 0);
 
 	    newPosition = topPosition;// + Vector3.up;
 
