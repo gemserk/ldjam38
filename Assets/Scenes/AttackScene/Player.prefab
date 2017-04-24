@@ -276,8 +276,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachPoint: {fileID: 4211341312467940}
   aimSpeed: -75
-  chargeSpeed: 1
+  chargeSpeed: 0.5
   chargeCooldown: 1
+  chargeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114964832766921622
 MonoBehaviour:
   m_ObjectHideFlags: 1

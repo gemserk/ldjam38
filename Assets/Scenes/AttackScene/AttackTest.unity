@@ -456,33 +456,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
         type: 2}
-      propertyPath: gradient.key0.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
-        type: 2}
       propertyPath: gradient.key1.a
-      value: 1
+      value: 0.69411767
       objectReference: {fileID: 0}
     - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
         type: 2}
       propertyPath: gradient.key2.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
-        type: 2}
-      propertyPath: gradient.atime1
-      value: 3855
-      objectReference: {fileID: 0}
-    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
-        type: 2}
-      propertyPath: gradient.atime2
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
-        type: 2}
-      propertyPath: gradient.m_NumAlphaKeys
-      value: 3
+      value: 0.627451
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c41fc73d33581b844af59185962f141f, type: 2}
