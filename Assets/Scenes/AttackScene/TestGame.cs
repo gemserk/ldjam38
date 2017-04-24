@@ -3,6 +3,22 @@ using Assets.Scripts.Game.Weapons;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+public static class ArrayExtensions
+{
+	public static T RandomItem<T>(this T[] array)
+	{
+		return array [UnityEngine.Random.Range (0, array.Length)];
+	}
+}
+
+public static class TransformExtensions
+{
+	public static Transform RandomChild(this Transform t)
+	{
+		return t.GetChild(UnityEngine.Random.Range(0, t.childCount));
+	}
+}
+
 public class TestGame : GameMode {
 
 	public GameMenu gameMenu;
@@ -25,6 +41,8 @@ public class TestGame : GameMode {
 
 	public Hud hud;
 
+	public GameObject possiblePlatformsContainer;
+
 	void Start()
 	{
 		for (int i = 0; i < characters.Length; i++) {
@@ -33,6 +51,19 @@ public class TestGame : GameMode {
 			characters [i].EnterWalkMode ();
 			characters [i].SetGameMode (this);
 			characters [i].SetHud (hud);
+
+			// create platform for player.
+
+			if (possiblePlatformsContainer != null && possiblePlatformsContainer.transform.childCount > 0) {
+				var platformSource = possiblePlatformsContainer.transform.RandomChild ();
+
+//				var playerPlatformSource = possiblePlatforms.RandomItem ();
+				var playerPlatform = GameObject.Instantiate (platformSource);
+				playerPlatform.gameObject.SetActive (true);
+
+				playerPlatform.transform.position = character.transform.position;
+				playerPlatform.transform.localEulerAngles = new Vector3 (0, 90 * UnityEngine.Random.Range (0, 4), 0);
+			}
 		}
 
 		currentMovement.character = characters [currentCharacter];
