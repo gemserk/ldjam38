@@ -137,7 +137,7 @@ public class LevelEditor : Editor {
 
                 var nextCube = thisCubes.FirstOrDefault(o => o != firstCube);
 
-                GameObject.DestroyImmediate(firstCube);
+                Undo.DestroyObjectImmediate(firstCube);
                 if (nextCube != null)
                 {
                     selection.Add(nextCube);
