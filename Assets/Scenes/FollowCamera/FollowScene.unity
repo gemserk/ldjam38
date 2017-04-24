@@ -202,7 +202,7 @@ Prefab:
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
       propertyPath: currentRailPosition
-      value: 1
+      value: 0.964
       objectReference: {fileID: 0}
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
@@ -241,7 +241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 43.667233
+      value: 7.6880336
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.x
@@ -250,7 +250,7 @@ Prefab:
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
       propertyPath: oldRailPosition
-      value: 0.47647846
+      value: 0.964
       objectReference: {fileID: 0}
     - target: {fileID: 4090476889063484, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.z
@@ -259,6 +259,11 @@ Prefab:
     - target: {fileID: 4083586788496120, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.z
       value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
+        type: 2}
+      propertyPath: startingRailPosition
+      value: 0.964
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
@@ -5814,6 +5819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b97e8748f5cbfd4d9185b00c8c083be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMenu: {fileID: 0}
   switchCharacterButton: SwitchPlayer
   characters:
   - {fileID: 1946399269}
