@@ -4,6 +4,8 @@ using System.Collections;
 
 public class TestGame : GameMode {
 
+	public GameMenu gameMenu;
+
 	public string switchCharacterButton;
 
 	public Character[] characters;
@@ -34,6 +36,9 @@ public class TestGame : GameMode {
 
 		currentMovement.character = characters [currentCharacter];
 		currentAttack.character = characters [currentCharacter];
+
+		if (gameMenu != null)
+			gameMenu.Init(false);
 	}
 
 	#region implemented abstract members of GameMode
