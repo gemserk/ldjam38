@@ -454,6 +454,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
+        type: 2}
+      propertyPath: gradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
+        type: 2}
+      propertyPath: gradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
+        type: 2}
+      propertyPath: gradient.key2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
+        type: 2}
+      propertyPath: gradient.atime1
+      value: 3855
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
+        type: 2}
+      propertyPath: gradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738073041450972, guid: c41fc73d33581b844af59185962f141f,
+        type: 2}
+      propertyPath: gradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c41fc73d33581b844af59185962f141f, type: 2}
   m_IsPrefabParent: 0
@@ -2278,18 +2308,6 @@ Prefab:
     - target: {fileID: 1272819811570962, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
       propertyPath: m_Name
       value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4211341312467940, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4211341312467940, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 4211341312467940, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94135a8a7a0220d449f7d204774c231f, type: 2}
@@ -5716,7 +5734,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 114436251424506954, guid: adba175a4bd73444084cc065d0c81d8e,
     type: 2}
   hud: {fileID: 213590274}
-  switchPlayersDelay: 2
+  switchPlayersDelay: 1
 --- !u!4 &1516948060
 Transform:
   m_ObjectHideFlags: 0
