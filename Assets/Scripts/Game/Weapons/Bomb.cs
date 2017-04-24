@@ -7,6 +7,17 @@ namespace Assets.Scripts.Game.Weapons
         public float explodeRadius;
 
 		public GameObject explosionEffectPrefab;
+        private Bounds? worldBounds = null;
+
+        public void Start()
+        {
+            var worldBoundsGO = GameObject.Find("WorldBounds");
+            if (worldBoundsGO != null)
+            {
+                var boxCollider = worldBoundsGO.GetComponent<BoxCollider>();
+                worldBounds = new Bounds(boxCollider.center, boxCollider.size);
+            }
+        }
 
         private void OnCollisionEnter(Collision other)
         {
@@ -25,11 +36,29 @@ namespace Assets.Scripts.Game.Weapons
 				}
 			}
 
-			if (explosionEffectPrefab != null) {
-				var explosionEffect = GameObject.Instantiate (explosionEffectPrefab);
-				explosionEffect.transform.position = this.transform.position;
-			}
+            AddExplodeFX();
 		}
+
+        public void AddExplodeFX()
+        {
+            if (explosionEffectPrefab != null) {
+                var explosionEffect = GameObject.Instantiate (explosionEffectPrefab);
+                explosionEffect.transform.position = this.transform.position;
+            }
+        }
+
+        public void Update()
+        {
+            if (worldBounds.HasValue)
+            {
+                Bounds bounds = worldBounds.Value;
+                if (!bounds.Contains(this.transform.position))
+                {
+                    AddExplodeFX();
+                    GameObject.Destroy(this.gameObject);
+                }
+            }
+        }
 
 		#region ProjectileHitReceiver implementation
 
