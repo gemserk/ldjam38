@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54757221120508542}
   - component: {fileID: 114483795541970378}
   - component: {fileID: 114867899365655882}
+  - component: {fileID: 114267932305966480}
   m_Layer: 0
   m_Name: EnergyGrenade
   m_TagString: Untagged
@@ -176,6 +177,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114267932305966480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1425878177856122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e34039280c4a91b39f5c2d9574b37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114483795541970378
 MonoBehaviour:
   m_ObjectHideFlags: 1

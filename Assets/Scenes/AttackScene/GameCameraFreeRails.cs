@@ -54,6 +54,38 @@ namespace Gemserk.LD38.Game
             return Vector3.Lerp (railStartPosition.transform.position, railEndPosition.transform.position, t);
         }
 
+        public override void CenterOn(Vector3 position)
+        {
+            var closestPoint = GetClosestPointToLine(railStartPosition.position, railEndPosition.position, position);
+            var totalDistance = Vector3.Distance(railStartPosition.position, railEndPosition.position);
+            var distanceFromStart = Vector3.Distance(railStartPosition.position, closestPoint);
+            var t = Mathf.Clamp01(distanceFromStart / totalDistance);
+            SetRailPosition(t);
+        }
+
+        static public Vector3 GetClosestPointToLine(Vector3 a, Vector3 b, Vector3 point)
+        {
+            Vector3 AP = point - a;       //Vector from A to P
+            Vector3 AB = b - a;       //Vector from A to B
+
+            float magnitudeAB = AB.sqrMagnitude;     //Magnitude of AB vector (it's length squared)
+            float ABAPproduct = Vector3.Dot(AP, AB);    //The DOT product of a_to_p and a_to_b
+            float distance = ABAPproduct / magnitudeAB; //The normalized "distance" from a to your closest point
+
+            if (distance < 0)     //Check if P projection is over vectorAB
+            {
+                return a;
+
+            }
+            else if (distance > 1)             {
+                return b;
+            }
+            else
+            {
+                return a + AB * distance;
+            }
+        }
+
         public override void MoveRailPosition(float direction)
         {
             currentRailPosition = Mathf.Clamp (currentRailPosition + direction, 0, 1);

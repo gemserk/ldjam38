@@ -61,11 +61,11 @@ public class TestGame : GameMode {
 
 		yield return new WaitForSeconds (switchPlayersDelay);
 
-		// FOLLOW PROJECTILE SEQUENCE INITIATED
-
-		// SHOW EXPLOSIONS, WAIT FOR A WHILE
-
-		// CENTER ON OTHER CHARACTER....
+	    Bomb projectile;
+	    while((projectile = GameObject.FindObjectOfType<Bomb>()) != null)
+	    {
+	        yield return null;
+	    }
 
 		NextPlayer ();
 
