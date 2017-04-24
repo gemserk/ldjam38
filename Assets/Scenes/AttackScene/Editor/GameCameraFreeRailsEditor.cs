@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.ComponentModel;
+using UnityEditor;
 using UnityEngine;
 
 namespace Gemserk.LD38.Game
@@ -12,21 +13,22 @@ namespace Gemserk.LD38.Game
 //            (target as GameCameraFreeRails).LateUpdate();
 //        }
 
-        public void OnSceneGUI()
-        {
-            GameCameraFreeRails component = (GameCameraFreeRails)target;
-
-            EditorGUI.BeginChangeCheck();
-            var cameraHandlePos = component.cameraTransform.position;
-            Vector3 newCameraPosition = Handles.PositionHandle(cameraHandlePos, Quaternion.identity);
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                var cameraTarget = component.GetRailsPosition(component.oldRailPosition);
-                Undo.RecordObject(target, "Change camera offset");
-                component.cameraOffset = newCameraPosition - cameraTarget;
-                component.LateUpdate();
-            }
-        }
+//        public void OnSceneGUI()
+//        {
+//            GameCameraFreeRails component = (GameCameraFreeRails)target;
+//
+//            EditorGUI.BeginChangeCheck();
+//            var cameraHandlePos = component.cameraTransform.position;
+//            Quaternion quaternion = Quaternion.LookRotation(component.cameraTransform.forward, component.cameraTransform.up);
+//             Vector3 newCameraPosition = Handles.PositionHandle(cameraHandlePos, quaternion);
+//
+//            if (EditorGUI.EndChangeCheck())
+//            {
+//                var cameraTarget = component.GetRailsPosition(component.oldRailPosition);
+//                Undo.RecordObject(target, "Change camera offset");
+//                component.cameraOffset = newCameraPosition - cameraTarget;
+//                component.LateUpdate();
+//            }
+//        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 
 namespace Gemserk.LD38.Game
@@ -9,9 +10,7 @@ namespace Gemserk.LD38.Game
         public Transform cameraTransform;
 
 
-        [ReadOnly]
-        [SerializeField]
-        private bool transitioning;
+        [ReadOnly] [SerializeField] private bool transitioning;
 
         Vector3 targetPosition;
 
@@ -24,17 +23,38 @@ namespace Gemserk.LD38.Game
 
         public float startingRailPosition = 0.1f;
 
-        [Range(0.0f, 1.0f)]
-        public float currentRailPosition;
+        [Range(0.0f, 1.0f)] public float currentRailPosition;
 
-        public Vector3 cameraOffset;
+        public Vector3 _cameraOffset;
+
+        public float cameraDistance;
+        public float yaw;
+        public float pitch;
+
+        public Transform dummyCenter;
+        public Transform dummyPoint;
+
+        public Vector3 cameraOffset
+        {
+            get
+            {
+                dummyPoint.transform.localPosition = new Vector3(cameraDistance, 0, 0);
+                dummyCenter.localEulerAngles = new Vector3(0, yaw, pitch);
+
+                var offset = dummyPoint.position - dummyCenter.position;
+                dummyOffset = offset;
+                return offset;
+            }
+        }
+
+        public Vector3 dummyOffset;
 
         public float oldRailPosition;
 
         void Start()
         {
             oldRailPosition = startingRailPosition;
-            SetRailPosition (startingRailPosition);
+            SetRailPosition(startingRailPosition);
         }
 
         public override bool IsTransitioning()
@@ -51,7 +71,7 @@ namespace Gemserk.LD38.Game
 
         public Vector3 GetRailsPosition(float t)
         {
-            return Vector3.Lerp (railStartPosition.transform.position, railEndPosition.transform.position, t);
+            return Vector3.Lerp(railStartPosition.transform.position, railEndPosition.transform.position, t);
         }
 
         public override void CenterOn(Vector3 position)
@@ -65,19 +85,19 @@ namespace Gemserk.LD38.Game
 
         static public Vector3 GetClosestPointToLine(Vector3 a, Vector3 b, Vector3 point)
         {
-            Vector3 AP = point - a;       //Vector from A to P
-            Vector3 AB = b - a;       //Vector from A to B
+            Vector3 AP = point - a; //Vector from A to P
+            Vector3 AB = b - a; //Vector from A to B
 
-            float magnitudeAB = AB.sqrMagnitude;     //Magnitude of AB vector (it's length squared)
-            float ABAPproduct = Vector3.Dot(AP, AB);    //The DOT product of a_to_p and a_to_b
+            float magnitudeAB = AB.sqrMagnitude; //Magnitude of AB vector (it's length squared)
+            float ABAPproduct = Vector3.Dot(AP, AB); //The DOT product of a_to_p and a_to_b
             float distance = ABAPproduct / magnitudeAB; //The normalized "distance" from a to your closest point
 
-            if (distance < 0)     //Check if P projection is over vectorAB
+            if (distance < 0) //Check if P projection is over vectorAB
             {
                 return a;
-
             }
-            else if (distance > 1)             {
+            else if (distance > 1)
+            {
                 return b;
             }
             else
@@ -88,13 +108,12 @@ namespace Gemserk.LD38.Game
 
         public override void MoveRailPosition(float direction)
         {
-            currentRailPosition = Mathf.Clamp (currentRailPosition + direction, 0, 1);
-            SetRailPosition (currentRailPosition);
+            currentRailPosition = Mathf.Clamp(currentRailPosition + direction, 0, 1);
+            SetRailPosition(currentRailPosition);
         }
 
         public void LateUpdate()
         {
-
             if (Application.isPlaying && !transitioning)
                 return;
 //
