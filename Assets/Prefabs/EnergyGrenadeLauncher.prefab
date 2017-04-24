@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4613886026851840}
   - component: {fileID: 114436251424506954}
   m_Layer: 0
-  m_Name: Bazooka
+  m_Name: EnergyGrenadeLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40333fb769f4647b740823ffe072804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1250858432019128, guid: ec4343385eeecc04b87b670cf83c39d2, type: 2}
+  projectile: {fileID: 1425878177856122, guid: 42ae0d161157da34b98cc4e0e6f1bd36, type: 2}
   fireTransform: {fileID: 4856088530065498}
   centerTransform: {fileID: 4430217943965858}
   forceResponse:
