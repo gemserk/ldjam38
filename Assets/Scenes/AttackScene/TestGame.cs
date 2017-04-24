@@ -30,6 +30,8 @@ public class TestGame : GameMode {
 	// TODO: the camera pos could be calculated dynamically based on character pos...
 	public float[] cameraRailPositions = new float[] { 0.1f, 0.9f };
 
+	public SimpleMovementInput currentMovementInput;
+
 	public SimpleMovementCharacter currentMovement;
 	public SimpleAttackInput currentAttack;
 
@@ -43,6 +45,8 @@ public class TestGame : GameMode {
 
 	public GameObject possiblePlatformsContainer;
 
+	public WorldMovement worldMovement;
+
 	void Start()
 	{
 		for (int i = 0; i < characters.Length; i++) {
@@ -51,6 +55,11 @@ public class TestGame : GameMode {
 			characters [i].EnterWalkMode ();
 			characters [i].SetGameMode (this);
 			characters [i].SetHud (hud);
+
+			var simpleMovement = characters [i].GetComponent<SimpleMovementCharacter> ();
+			if (simpleMovement != null) {
+				simpleMovement.worldMovement = worldMovement;
+			}
 
 			// create platform for player.
 
@@ -66,8 +75,14 @@ public class TestGame : GameMode {
 			}
 		}
 
-		currentMovement.character = characters [currentCharacter];
+		if (currentMovement != null)
+			currentMovement.character = characters [currentCharacter];
+		
 		currentAttack.character = characters [currentCharacter];
+
+		if (currentMovementInput != null) {
+			currentMovementInput.simpleMovement = characters [currentCharacter].GetComponent<SimpleMovementCharacter> ();
+		}
 
 		if (gameMenu != null) {
 			gameMenu.Init(false);
@@ -119,8 +134,12 @@ public class TestGame : GameMode {
 
 	IEnumerator SwitchPlayers()
 	{
-		currentMovement.enabled = false;
+		if (currentMovement != null)
+			currentMovement.enabled = false;
 		currentAttack.enabled = false;
+
+		if (currentMovementInput != null)
+			currentMovementInput.enabled = false;
 
 		yield return new WaitForSeconds (switchPlayersDelay);
 
@@ -137,8 +156,12 @@ public class TestGame : GameMode {
 
 		yield return new WaitWhile (gameCamera.IsTransitioning);
 
-		currentMovement.enabled = true;
+		if (currentMovement != null)
+			currentMovement.enabled = true;
 		currentAttack.enabled = true;
+
+		if (currentMovementInput != null)
+			currentMovementInput.enabled = true;
 	}
 
 	// Update is called once per frame
@@ -162,7 +185,13 @@ public class TestGame : GameMode {
 
 		currentCharacter = (currentCharacter + 1) % characters.Length;
 
-		currentMovement.character = characters [currentCharacter];
+		if (currentMovement != null)
+			currentMovement.character = characters [currentCharacter];
+		
 		currentAttack.character = characters [currentCharacter];
+
+		if (currentMovementInput != null) {
+			currentMovementInput.simpleMovement = characters [currentCharacter].GetComponent<SimpleMovementCharacter> ();
+		}
 	}
 }

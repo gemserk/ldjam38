@@ -4279,7 +4279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 900836822}
   - component: {fileID: 900836823}
-  - component: {fileID: 900836824}
   - component: {fileID: 900836825}
   m_Layer: 0
   m_Name: Controls
@@ -4314,22 +4313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveHorizontalAxis: Horizontal
   moveForwardAxis: Vertical
-  simpleMovement: {fileID: 900836824}
+  simpleMovement: {fileID: 0}
   movementCooldown: 0.5
---- !u!114 &900836824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 900836821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd168042a048ea4a809d3d592eb2532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  worldMovement: {fileID: 1860159481}
-  deathTorque: 1
 --- !u!114 &900836825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8153,13 +8138,15 @@ MonoBehaviour:
   cameraRailPositions:
   - 0.9
   - 0.1
-  currentMovement: {fileID: 900836824}
+  currentMovementInput: {fileID: 900836823}
+  currentMovement: {fileID: 0}
   currentAttack: {fileID: 900836825}
   gameCamera: {fileID: 1862488696}
   weaponPrefab: {fileID: 114436251424506954, guid: adba175a4bd73444084cc065d0c81d8e,
     type: 2}
   hud: {fileID: 213590274}
   possiblePlatformsContainer: {fileID: 1652067016}
+  worldMovement: {fileID: 1860159481}
   switchPlayersDelay: 1.5
 --- !u!4 &1516948060
 Transform:
@@ -8931,7 +8918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1652067017
 Transform:
   m_ObjectHideFlags: 0
