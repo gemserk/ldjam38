@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Gemserk.LD38.Game.World;
+using Gemserk.Utils;
 using UnityEngine;
 
 public class WorldMovementBlocks : WorldMovement
@@ -17,7 +18,7 @@ public class WorldMovementBlocks : WorldMovement
 		//newPosition += new Vector3 (0, unitVector.y * (heightTolerance + 1), 0);
 
 
-	    var cubesInNewPosition = GetWorldCubesInColumn(newPosition);
+	    var cubesInNewPosition = Util.GetWorldCubesInColumn(newPosition);
 
 	    var firstCube = cubesInNewPosition.FirstOrDefault();
 
@@ -34,17 +35,5 @@ public class WorldMovementBlocks : WorldMovement
 	}
 	#endregion
 
-    public static IEnumerable<GameObject> GetWorldCubesInColumn(Vector3 position)
-    {
-        var axis = Vector3.down;
-        Ray ray = new Ray(position - axis * 1000, axis);
 
-        var hits = Physics.RaycastAll(ray);
-
-        return hits.OrderBy(hit => hit.distance)
-            .Select(hit => hit.collider.gameObject.GetComponentInParent<WorldCube>())
-            .Where(worldCube => worldCube != null)
-            .Select(worldCube => worldCube.gameObject);
-
-    }
 }

@@ -11,6 +11,8 @@ public class Character : MonoBehaviour, ProjectileHitReceiver {
 
 	public CharacterModel characterModel;
 
+    public bool IsDead = false;
+
 	public void SetHud(Hud hud)
 	{
 		this.hud = hud;
