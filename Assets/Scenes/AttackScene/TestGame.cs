@@ -42,12 +42,14 @@ public class TestGame : GameMode {
 			gameMenu.Init(false);
 		
 			gameMenu.openCallback = delegate(GameMenu menu) {
+				LeanTween.cancelAll(gameObject);
 				LeanTween.value(gameObject, Time.timeScale, 0.0f, 2.0f).setUseEstimatedTime(true).setEase(LeanTweenType.easeOutQuad).setOnUpdate(delegate(float v) {
 					Time.timeScale = v;
 				});
 			};
 
 			gameMenu.closeCallback = delegate(GameMenu menu) {
+				LeanTween.cancelAll(gameObject);
 				LeanTween.value(gameObject, Time.timeScale, 1.0f, 0.25f).setUseEstimatedTime(true).setOnUpdate(delegate(float v) {
 					Time.timeScale = v;
 				});
