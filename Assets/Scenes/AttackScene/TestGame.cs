@@ -142,7 +142,7 @@ public class TestGame : GameMode {
 
 	public float switchPlayersDelay = 0.25f;
 
-	float showMenuDelay = 4.0f;
+	float showMenuDelay = 3.0f;
 
 	IEnumerator PlayerLoseAnimation(Character character)
 	{
