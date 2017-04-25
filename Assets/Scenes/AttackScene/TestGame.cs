@@ -124,21 +124,49 @@ public class TestGame : GameMode {
 
 	#region implemented abstract members of GameMode
 
+	Coroutine switchPlayersCoroutine;
+
 	public override void OnCharacterFired (Character character)
 	{
 		if (character == characters [currentCharacter]) {
-			StartCoroutine (SwitchPlayers ());
+			switchPlayersCoroutine = StartCoroutine (SwitchPlayers ());
 		}
 	}
 
 	public override void OnCharacterDeath (Character character)
 	{
-		
+		StartCoroutine (PlayerLoseAnimation (character));
 	}
 
 	#endregion
 
 	public float switchPlayersDelay = 0.25f;
+
+	float showMenuDelay = 3.0f;
+
+	IEnumerator PlayerLoseAnimation(Character character)
+	{
+		if (switchPlayersCoroutine != null)
+			StopCoroutine (switchPlayersCoroutine);
+		
+		if (currentMovement != null)
+			currentMovement.enabled = false;
+		currentAttack.enabled = false;
+
+		if (currentMovementInput != null)
+			currentMovementInput.enabled = false;
+
+//		yield return new WaitForSeconds (0.1f);
+
+		gameCamera.CenterOn(character.transform.position);
+//		gameCamera.
+
+		yield return new WaitForSeconds (showMenuDelay);
+
+		if (gameMenu != null) {
+			gameMenu.Open ();
+		}
+	}
 
 	IEnumerator SwitchPlayers()
 	{
@@ -157,6 +185,12 @@ public class TestGame : GameMode {
 	        yield return null;
 	    }
 
+		yield return new WaitForSeconds (0.1f);
+
+//		var nextPlayer = GetNextPlayer ();
+//		if (nextPlayer.IsDead)
+//			yield break;
+
 		NextPlayer ();
 
 		//gameCamera.SetRailPosition (cameraRailPositions [currentCharacter]);
@@ -171,6 +205,8 @@ public class TestGame : GameMode {
 
 		if (currentMovementInput != null)
 			currentMovementInput.enabled = true;
+
+		switchPlayersCoroutine = null;
 	}
 
 	// Update is called once per frame
@@ -182,6 +218,12 @@ public class TestGame : GameMode {
 //			gameCamera.CenterOn (cameraPositions [currentCharacter]);
 		}
 
+	}
+
+	Character GetNextPlayer()
+	{
+		int nextCharacter = (currentCharacter + 1) % characters.Length;
+		return characters [nextCharacter];
 	}
 
 	void NextPlayer()
