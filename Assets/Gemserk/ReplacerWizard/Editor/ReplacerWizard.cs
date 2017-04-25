@@ -33,6 +33,8 @@ namespace Gemserk.ReplacerWizard
                 }
 
                 newGO.transform.localPosition = selectedGO.transform.localPosition;
+                newGO.transform.localEulerAngles = selectedGO.transform.localEulerAngles;
+                newGO.transform.localScale = selectedGO.transform.localScale;
                 newGO.name = selectedGO.name;
                 GameObject.DestroyImmediate(selectedGO, true);
             }
