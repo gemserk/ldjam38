@@ -20,5 +20,23 @@ namespace Gemserk.Utils
                 .Select(worldCube => worldCube.gameObject);
 
         }
+
+
+        public static float interpolate(float xa, float xb, float ya, float yb, float xvar)
+        {
+            if(xvar < xa){
+                return ya;
+            }
+
+            if(xvar > xb){
+                return yb;
+            }
+
+            float alpha = (xvar - xa) / (xb - xa);
+            float yvar = ya + (alpha * (yb - ya));
+
+            return yvar;
+        }
+
     }
 }

@@ -151,7 +151,8 @@ public class TestGame : GameMode {
 
 		NextPlayer ();
 
-		gameCamera.SetRailPosition (cameraRailPositions [currentCharacter]);
+		//gameCamera.SetRailPosition (cameraRailPositions [currentCharacter]);
+	    gameCamera.CenterOn(characters[currentCharacter].transform.position);
 //		gameCamera.CenterOn (cameraPositions [currentCharacter]);
 
 		yield return new WaitWhile (gameCamera.IsTransitioning);
@@ -169,7 +170,7 @@ public class TestGame : GameMode {
 
 		if (Input.GetButtonUp (switchCharacterButton)) {
 			NextPlayer();
-			gameCamera.SetRailPosition (cameraRailPositions [currentCharacter]);
+		    gameCamera.CenterOn(characters[currentCharacter].transform.position);
 //			gameCamera.CenterOn (cameraPositions [currentCharacter]);
 		}
 
