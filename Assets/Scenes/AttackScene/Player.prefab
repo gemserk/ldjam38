@@ -292,6 +292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 95642811510064912}
   damageAnimation: Hit
+  deathEffectPrefab: {fileID: 1108223710642208, guid: 4c8d3f25a78095748b3eb985f3f9460e,
+    type: 2}
+  model: {fileID: 1890522410730368}
 --- !u!114 &114703395221713832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +310,7 @@ MonoBehaviour:
   characterModel: {fileID: 114429527716699824}
   rotationSpeed: 120
   IsDead: 0
+  hitDistanceToDeath: 3
 --- !u!114 &114887715956102290
 MonoBehaviour:
   m_ObjectHideFlags: 1

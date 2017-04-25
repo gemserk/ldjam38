@@ -22,7 +22,7 @@ namespace Gemserk.LD38.Game.World
 
 		#region ProjectileHitReceiver implementation
 
-		public void OnProjectileHit (Bomb bomb)
+		public void OnProjectileHit (ProjectileHit hit)
 		{
 			GameObject.Destroy (this.gameObject);
 		}

@@ -18,6 +18,8 @@ public class Character : MonoBehaviour, ProjectileHitReceiver {
 
     public bool IsDead = false;
 
+	public float hitDistanceToDeath;
+
 	void Start()
 	{
 		walkRotation = transform.localEulerAngles.y;
@@ -35,14 +37,24 @@ public class Character : MonoBehaviour, ProjectileHitReceiver {
 	}
 
 	#region ProjectileHitReceiver implementation
-	public void OnProjectileHit (Bomb bomb)
+	public void OnProjectileHit (ProjectileHit hit)
 	{
 		// if no life then die...
 
-		if (characterModel != null)
-			characterModel.DamageReceived ();
 
-		gameMode.OnCharacterDeath (this);
+		if (Vector3.Distance (this.transform.position, hit.projectile.transform.position) < hitDistanceToDeath) {
+
+			if (characterModel != null)
+				characterModel.Death ();
+
+			IsDead = true;
+			gameMode.OnCharacterDeath (this);
+		
+		} else {
+			if (characterModel != null)
+				characterModel.DamageReceived ();
+		}
+
 	}
 	#endregion
 

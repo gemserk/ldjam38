@@ -1,11 +1,15 @@
-﻿using UnityEngine;
-using Assets.Scripts.Game.Weapons;
+﻿using Assets.Scripts.Game.Weapons;
 
 namespace Assets.Scripts.Game.Weapons
 {
+	public struct ProjectileHit 
+	{
+		public Bomb projectile;
+	}
+
 	public interface ProjectileHitReceiver {
 
-		void OnProjectileHit(Bomb bomb);
+		void OnProjectileHit(ProjectileHit hit);
 
 	}
 

@@ -31,7 +31,9 @@ namespace Assets.Scripts.Game.Weapons
 				var projectileHitReceiver = collider.GetComponent<ProjectileHitReceiver> ();
 
 				if (projectileHitReceiver != null) {
-					projectileHitReceiver.OnProjectileHit (this);
+					projectileHitReceiver.OnProjectileHit (new ProjectileHit() {
+						projectile = this
+					});
 				} else {
 					GameObject.Destroy (collider.gameObject);
 				}
@@ -63,7 +65,7 @@ namespace Assets.Scripts.Game.Weapons
 
 		#region ProjectileHitReceiver implementation
 
-		public void OnProjectileHit (Bomb bomb)
+		public void OnProjectileHit (ProjectileHit hit)
 		{
 			GameObject.Destroy (this.gameObject);
 		}

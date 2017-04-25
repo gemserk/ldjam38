@@ -7,12 +7,12 @@ namespace Assets.Scripts.Game.Weapons
 	{
 		public GameObject projectileHitReceiverDelegateObject;
 
-		public void OnProjectileHit (Bomb bomb)
+		public void OnProjectileHit (ProjectileHit hit)
 		{
 			if (projectileHitReceiverDelegateObject == null)
 				return;
 			var projectileDelegate = projectileHitReceiverDelegateObject.GetComponent<ProjectileHitReceiver> ();
 			if (projectileDelegate != null)
-				projectileDelegate.OnProjectileHit (bomb);
+				projectileDelegate.OnProjectileHit (hit);
 		}
 	}}
