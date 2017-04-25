@@ -53428,11 +53428,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.13977976
+      value: 0.13977975
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.839443
+      value: 0.8394431
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalRotation.z
@@ -53440,19 +53440,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.45863008
+      value: 0.45863006
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 54.045506
+      value: 50.805004
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 41.270145
+      value: 38.664906
       objectReference: {fileID: 0}
     - target: {fileID: 4905645409631734, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -67.681206
+      value: -63.623123
       objectReference: {fileID: 0}
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
@@ -53503,26 +53503,26 @@ Prefab:
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
       propertyPath: dummyOffset.x
-      value: -67.681206
+      value: -63.623123
       objectReference: {fileID: 0}
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
       propertyPath: dummyOffset.y
-      value: 54.045506
+      value: 50.805004
       objectReference: {fileID: 0}
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
       propertyPath: cameraDistance
-      value: 96.9
+      value: 91.09
       objectReference: {fileID: 0}
     - target: {fileID: 4919312101881758, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 96.9
+      value: 91.09
       objectReference: {fileID: 0}
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
       propertyPath: dummyOffset.z
-      value: 43.450546
+      value: 40.845306
       objectReference: {fileID: 0}
     - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
         type: 2}
@@ -53568,6 +53568,16 @@ Prefab:
         type: 2}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967039
+      objectReference: {fileID: 0}
+    - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
+        type: 2}
+      propertyPath: targetCameraDistance
+      value: 91.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 114257949399413530, guid: 1b9b4818561f5d24c8956bc52622eb00,
+        type: 2}
+      propertyPath: minDistance
+      value: 85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b9b4818561f5d24c8956bc52622eb00, type: 2}
