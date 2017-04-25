@@ -41,6 +41,8 @@ public class TestGame : GameMode {
 
 	public Weapon weaponPrefab;
 
+	public Weapon[] weaponPrefabsPerPlayer;
+
 	public Hud hud;
 
 	public GameObject possiblePlatformsContainer;
@@ -51,7 +53,13 @@ public class TestGame : GameMode {
 	{
 		for (int i = 0; i < characters.Length; i++) {
 			var character = characters [i];
-			character.Equip (GameObject.Instantiate (weaponPrefab));
+
+			var playerWeaponPrefab = weaponPrefab;
+
+			if (weaponPrefabsPerPlayer != null)
+				playerWeaponPrefab = weaponPrefabsPerPlayer [i];	
+
+			character.Equip (GameObject.Instantiate (playerWeaponPrefab));
 			characters [i].EnterWalkMode ();
 			characters [i].SetGameMode (this);
 			characters [i].SetHud (hud);

@@ -44165,6 +44165,9 @@ MonoBehaviour:
   gameCamera: {fileID: 1862488696}
   weaponPrefab: {fileID: 114436251424506954, guid: adba175a4bd73444084cc065d0c81d8e,
     type: 2}
+  weaponPrefabsPerPlayer:
+  - {fileID: 114436251424506954, guid: adba175a4bd73444084cc065d0c81d8e, type: 2}
+  - {fileID: 114436251424506954, guid: 03dc852195bf63a4fb30b7c03756c2e5, type: 2}
   hud: {fileID: 213590274}
   possiblePlatformsContainer: {fileID: 1652067016}
   worldMovement: {fileID: 1860159481}
