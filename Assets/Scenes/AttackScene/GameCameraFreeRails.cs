@@ -1,4 +1,5 @@
-﻿﻿using UnityEngine;
+﻿﻿using Gemserk.Utils;
+ using UnityEngine;
 
 namespace Gemserk.LD38.Game
 {
@@ -29,6 +30,14 @@ namespace Gemserk.LD38.Game
         public float yaw;
         public float pitch;
 
+
+        public float minDistance;
+        public float maxDistance;
+
+        public float minDistanceToRail;
+        public float maxDistanceToRail;
+
+
         public Transform dummyCenter;
         public Transform dummyPoint;
 
@@ -48,6 +57,8 @@ namespace Gemserk.LD38.Game
         public Vector3 dummyOffset;
 
         public float oldRailPosition;
+
+        public float targetCameraDistance;
 
         void Start()
         {
@@ -78,6 +89,14 @@ namespace Gemserk.LD38.Game
             var totalDistance = Vector3.Distance(railStartPosition.position, railEndPosition.position);
             var distanceFromStart = Vector3.Distance(railStartPosition.position, closestPoint);
             var t = Mathf.Clamp01(distanceFromStart / totalDistance);
+
+            float distanceToLine = Vector3.Distance(closestPoint, position);
+
+            var cameraDistanceInterpolated = Util.interpolate(minDistanceToRail, maxDistanceToRail, minDistance,
+                maxDistance, distanceToLine);
+
+            targetCameraDistance = cameraDistanceInterpolated;
+
             SetRailPosition(t);
         }
 
@@ -125,6 +144,8 @@ namespace Gemserk.LD38.Game
                     transitioning = false;
                 }
             }
+
+            cameraDistance = Mathf.Lerp(cameraDistance, targetCameraDistance, Time.deltaTime * transitionSpeed);
 
             var newCameraTarget = GetRailsPosition(newRailPosition);
 
